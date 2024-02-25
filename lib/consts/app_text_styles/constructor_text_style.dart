@@ -43,4 +43,10 @@ class ConstructorTextStyle {
     fontWeight: FontWeight.w500,
     color: Colors.black.withOpacity(0.5),
   );
+  static TextStyle priority = TextStyle(
+    fontFamily: 'SF Pro Text',
+    fontSize: 18.0,
+    fontWeight: FontWeight.w400,
+    color: Colors.black.withOpacity(0.5),
+  );
 }

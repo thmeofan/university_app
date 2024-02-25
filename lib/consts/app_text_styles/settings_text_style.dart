@@ -6,14 +6,12 @@ class SettingsTextStyle {
   static const TextStyle tile = TextStyle(
     fontFamily: 'Roboto',
     fontSize: 16.0,
-    height: 16 / 12,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     //  color: AppColors.darkGreyColor,
   );
-  static const TextStyle back = TextStyle(
+  static const TextStyle title = TextStyle(
     fontFamily: 'Roboto',
-    fontSize: 18.0,
-    fontWeight: FontWeight.w400,
-    color: AppColors.bluishGreenColor,
+    fontSize: 32.0,
+    fontWeight: FontWeight.w700,
   );
 }

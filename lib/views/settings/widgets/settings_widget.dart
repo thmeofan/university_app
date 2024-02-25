@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:university_app/consts/app_text_styles/settings_text_style.dart';
 
 class SettingsTile extends StatelessWidget {
   final String text;
@@ -27,9 +28,7 @@ class SettingsTile extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              text,
-            ),
+            Text(text, style: SettingsTextStyle.tile),
             const Spacer(),
             SvgPicture.asset(
               'assets/icons/arrow.svg',

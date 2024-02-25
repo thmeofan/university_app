@@ -3,8 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:university_app/views/settings/widgets/settings_widget.dart';
 
 import '../../../consts/app_colors.dart';
+import '../../../consts/app_text_styles/constructor_text_style.dart';
 import '../../../consts/app_text_styles/settings_text_style.dart';
-import '../../../consts/app_text_styles/synopsis_text_style.dart';
+import '../../../consts/app_text_styles/home_screen_text_style.dart';
 import '../../app/views/my_in_app_web_view.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -32,11 +33,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: AppColors.lightGreyColor,
-        elevation: 0,
-        // title: const Text(
-        //   'Settings',
-        //   style: SynopsisTextStyle.appbar,
-        // ),
+        title: const Text(
+          'Atrás',
+          style: ConstructorTextStyle.appBar,
+        ),
+        titleSpacing: -5,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: SvgPicture.asset('assets/icons/leading.svg'),
+        ),
       ),
       body: Container(
         color: AppColors.lightGreyColor,
@@ -50,7 +57,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: size.width * 0.015),
-                child: const Text('Ajustes'),
+                child: const Text(
+                  'Ajustes',
+                  style: SettingsTextStyle.title,
+                ),
               ),
               SizedBox(
                 height: size.height * 0.01,

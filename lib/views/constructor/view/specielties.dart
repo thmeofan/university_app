@@ -49,32 +49,37 @@ class _SpecialtiesScreenState extends State<SpecialtiesScreen> {
       body: Container(
         color: AppColors.lightGreyColor,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.only(
+            top: size.height * 0.015,
+            left: size.width * 0.025,
+            right: size.width * 0.025,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              const Text(
+                'Nueva universidad',
+                style: ConstructorTextStyle.title,
+              ),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
               SpecialtyWidget(
                 onSpecialtyAdded: _addSpecialty,
               ),
               ..._specialties.map(
                 (s) => ListTile(
-                  title: Text(s.name),
-                  trailing: Text('Priority: ${s.priority}'),
+                  title: Text(
+                    s.name,
+                    style: ConstructorTextStyle.inputText,
+                  ),
+                  trailing: Text(
+                    'Priority: ${s.priority}',
+                    style: ConstructorTextStyle.hintText,
+                  ),
                 ),
               ),
-              // ElevatedButton(
-              //   onPressed: () async {
-              //     widget.universityInfo.specialties = _specialties;
-              //     List<UniversityInfo> universityList =
-              //         await UniversityPreferences().loadUniversityList();
-              //     universityList.add(widget.universityInfo);
-              //     await UniversityPreferences()
-              //         .saveUniversityList(universityList);
-              //     Navigator.of(context).pushNamedAndRemoveUntil(
-              //         AppRoutes.home, (Route<dynamic> route) => false);
-              //   },
-              //   child: Text('Save and Finish'),
-              // ),
+              Spacer(),
               ChosenActionButton(
                 text: 'Próximo',
                 onTap: () {

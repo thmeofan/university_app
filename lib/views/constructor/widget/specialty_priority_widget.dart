@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/consts/app_colors.dart';
+import 'package:university_app/consts/app_text_styles/constructor_text_style.dart';
 
 class SpecialtyPriority extends StatefulWidget {
   final Function(int priority) onPriorityChanged;
@@ -23,7 +24,7 @@ class _SpecialtyPriorityState extends State<SpecialtyPriority> {
   @override
   Widget build(BuildContext context) {
     List<String> priorityTexts = ['Primero', 'Segundo', 'Tercero'];
-
+    Size size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -31,6 +32,8 @@ class _SpecialtyPriorityState extends State<SpecialtyPriority> {
           GestureDetector(
             onTap: () => _setPriority(i),
             child: Container(
+              height: size.height * 0.074,
+              width: size.width * 0.27,
               padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               decoration: BoxDecoration(
                 color: _priority == i
@@ -38,9 +41,11 @@ class _SpecialtyPriorityState extends State<SpecialtyPriority> {
                     : AppColors.lightGreyColor,
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
-              child: Text(
-                priorityTexts[i - 1],
-                style: TextStyle(color: Colors.white),
+              child: Center(
+                child: Text(
+                  priorityTexts[i - 1],
+                  style: ConstructorTextStyle.priority,
+                ),
               ),
             ),
           ),

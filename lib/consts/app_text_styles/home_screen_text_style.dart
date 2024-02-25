@@ -2,25 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../app_colors.dart';
 
-class SynopsisTextStyle {
-  static TextStyle title = TextStyle(
+class HomeScreenTextStyle {
+  static TextStyle name = const TextStyle(
     fontFamily: 'Roboto',
-    fontSize: 16.0,
-    height: 20 / 18,
-    fontWeight: FontWeight.w500,
-    color: Colors.black.withOpacity(0.5),
+    fontSize: 20.0,
+    fontWeight: FontWeight.w700,
   );
 
-  static const TextStyle read = TextStyle(
+  static TextStyle address = TextStyle(
     fontFamily: 'Roboto',
-    fontSize: 12.0,
-    height: 18 / 12,
+    fontSize: 14.0,
     fontWeight: FontWeight.w400,
-    color: AppColors.bluishGreenColor,
+    color: Colors.black.withOpacity(0.35),
   );
   static const TextStyle appbar = TextStyle(
     fontFamily: 'Roboto',
-    fontSize: 20.0,
+    fontSize: 24.0,
     height: 22 / 20,
     fontWeight: FontWeight.w700,
     // color: AppColors.whiteColor,

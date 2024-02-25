@@ -22,7 +22,7 @@ class _SpecialtyWidgetState extends State<SpecialtyWidget> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.35,
+      height: size.height * 0.32,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -37,7 +37,7 @@ class _SpecialtyWidgetState extends State<SpecialtyWidget> {
                   width: size.width * 0.01,
                 ),
                 Text(
-                  'Ventajas',
+                  'Lista de\nespecialidades',
                   style: ConstructorTextStyle.lable,
                 ),
                 Spacer(),
@@ -65,24 +65,19 @@ class _SpecialtyWidgetState extends State<SpecialtyWidget> {
               height: size.height * 0.02,
             ),
             Container(
-              color: AppColors.lightGreyColor,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(40)),
+                color: AppColors.lightGreyColor,
+              ),
               child: TextField(
                 controller: _controller,
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.lightGreyColor,
                   labelText: 'Nombre de la especialización',
                   labelStyle: ConstructorTextStyle.hintText,
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(15.0),
                     borderSide: BorderSide.none,
                   ),
                 ),

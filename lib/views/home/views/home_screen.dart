@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:university_app/consts/app_colors.dart';
+import 'package:university_app/consts/app_text_styles/home_screen_text_style.dart';
 import 'package:university_app/views/app/widgets/chosen_action_button_widget.dart';
 
 import '../../../data/model/university_info.dart';
@@ -42,7 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.lightGreyColor,
-        title: Text('Tu educación'),
+        title: Text(
+          'Tu educación',
+          style: HomeScreenTextStyle.appbar,
+        ),
         actions: [
           IconButton(
             icon: SvgPicture.asset(
@@ -61,43 +65,50 @@ class _HomeScreenState extends State<HomeScreen> {
         color: AppColors.lightGreyColor,
         child: Column(
           children: [
-            universities.isEmpty
-                ? const Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 16.0),
-                      child: Text(
-                        "Para iniciar la selección, añade la primera universidad.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                  )
-                : Expanded(
-                    child: ListView.builder(
-                      itemCount: universities.length,
-                      itemBuilder: (context, index) {
-                        UniversityInfo uni = universities[index];
-                        return ShortUniInfoWidget(
-                          name: uni.name,
-                          address: uni.address,
-                          rating: uni.rating,
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    FullInfoScreen(universityInfo: uni),
-                              ),
-                            );
-                          },
-                        );
-                      },
+            if (universities.isEmpty)
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 16.0),
+                  child: Text(
+                    "Para iniciar la selección, añade la primera universidad.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey,
                     ),
                   ),
-            Spacer(),
+                ),
+              )
+            else
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: size.height * 0.015,
+                    left: size.width * 0.015,
+                    right: size.width * 0.015,
+                  ),
+                  child: ListView.builder(
+                    itemCount: universities.length,
+                    itemBuilder: (context, index) {
+                      UniversityInfo uni = universities[index];
+                      return ShortUniInfoWidget(
+                        name: uni.name,
+                        address: uni.address,
+                        rating: uni.rating,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  FullInfoScreen(universityInfo: uni),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
+              ),
             ChosenActionButton(
               text: 'Agregar nueva universidad',
               onTap: () {
@@ -107,9 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ).then((_) => _onAddComplete());
               },
             ),
-            SizedBox(
-              height: size.height * 0.03,
-            ),
+            SizedBox(height: size.height * 0.03),
           ],
         ),
       ),
