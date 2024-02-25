@@ -81,7 +81,7 @@ class FullInfoScreen extends StatelessWidget {
                                   ? Icons.star
                                   : Icons.star_border,
                               color: index < universityInfo.rating
-                                  ? Colors.yellow
+                                  ? AppColors.yellowColor
                                   : Colors.grey,
                             );
                           }),
