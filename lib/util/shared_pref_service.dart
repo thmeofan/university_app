@@ -22,20 +22,15 @@ class UniversityPreferences {
 
   Future<void> saveUniversityList(List<UniversityInfo> universities) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    // Convert the list of UniversityInfo objects to a list of JSON strings
     List<String> universityJsonList =
         universities.map((uni) => jsonEncode(uni.toJson())).toList();
-    // Save the list of JSON strings to shared preferences
     await prefs.setStringList(_keyUniversities, universityJsonList);
   }
 
   Future<List<UniversityInfo>> loadUniversityList() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    // Get the list of JSON strings from shared preferences
     List<String>? universityJsonList = prefs.getStringList(_keyUniversities);
-    // If the list is null (not found), return an empty list
     if (universityJsonList == null) return [];
-    // Otherwise, convert each JSON string back to a UniversityInfo object
     return universityJsonList
         .map((uniJson) => UniversityInfo.fromJson(jsonDecode(uniJson)))
         .toList();

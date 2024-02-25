@@ -188,19 +188,6 @@ class FullInfoScreen extends StatelessWidget {
                       SizedBox(
                         height: size.height * 0.01,
                       ),
-                      // for (Specialty specialty in universityInfo.specialties)
-                      //   Container(
-                      //       height: size.height * 0.15,
-                      //       width: double.infinity,
-                      //       decoration: const BoxDecoration(
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(10)),
-                      //         color: Colors.white,
-                      //       ),
-                      //       child: Text(
-                      //         '• ${specialty.name} - Priority: ${specialty.priority}',
-                      //         style: FullInfoTextStyle.tile,
-                      //       )),
                       SizedBox(
                         height: size.height * 0.005,
                       ),

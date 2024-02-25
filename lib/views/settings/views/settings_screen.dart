@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:university_app/views/settings/widgets/settings_widget.dart';
-
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles/constructor_text_style.dart';
 import '../../../consts/app_text_styles/settings_text_style.dart';
-import '../../../consts/app_text_styles/home_screen_text_style.dart';
 import '../../app/views/my_in_app_web_view.dart';
 
 class SettingsScreen extends StatefulWidget {

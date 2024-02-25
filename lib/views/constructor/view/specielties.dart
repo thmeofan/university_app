@@ -4,8 +4,6 @@ import 'package:university_app/consts/app_colors.dart';
 import 'package:university_app/views/constructor/view/cost_and_duration.dart';
 import '../../../consts/app_text_styles/constructor_text_style.dart';
 import '../../../data/model/university_info.dart';
-import '../../../util/app_routes.dart';
-import '../../../util/shared_pref_service.dart';
 import '../../app/widgets/chosen_action_button_widget.dart';
 import '../widget/specielty_widget.dart';
 

@@ -11,10 +11,6 @@ abstract class AppRoutes {
   static const home = 'home';
   static const welcome = 'welcome';
   static const profile = 'profile';
-  static const quiz = 'quiz';
-  static const article = 'article';
-  static const income = 'income';
-  static const news = 'news';
 
   static MaterialPageRoute onGenerateRoute(RouteSettings settings) {
     final Widget child;
@@ -27,21 +23,6 @@ abstract class AppRoutes {
         child = HomeScreen();
       case profile:
         child = const SettingsScreen();
-      // case quiz:
-      //   List<QuizModel> quizzes = settings.arguments as List<QuizModel>;
-      //   child = QuizScreen(
-      //     quizzes: quizzes,
-      //   );
-      // case income:
-      //   child = IncomeScreen();
-      // case news:
-      //   List<NewsModel> newsModel = settings.arguments as List<NewsModel>;
-      //   child = NewsScreen(newsModel: newsModel);
-      // case article:
-      //   NewsModel news = settings.arguments as NewsModel;
-      //   child = ArticleScreen(
-      //     newsModel: news,
-      //   );
       default:
         child = BlocProvider(
           create: (context) => onboardingCubit,

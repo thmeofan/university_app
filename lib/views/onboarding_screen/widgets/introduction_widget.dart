@@ -18,10 +18,6 @@ class IntroductionWidget extends StatelessWidget {
         image: DecorationImage(
           image: AssetImage(imagePath),
           fit: BoxFit.cover,
-          // colorFilter: ColorFilter.mode(
-          //   //Colors.white.withOpacity(1),
-          //   BlendMode.dstATop,
-          // ),
         ),
       ),
     );

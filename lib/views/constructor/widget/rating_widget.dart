@@ -15,8 +15,7 @@ class StarRating extends StatelessWidget {
 
   Widget buildStar(int index) {
     return GestureDetector(
-      onTap: () =>
-          onRatingChanged(index + 1), // Pass index + 1 instead of index
+      onTap: () => onRatingChanged(index + 1),
       child: SvgPicture.asset(
         'assets/icons/star.svg',
         color: index < rating ? color : Colors.grey,

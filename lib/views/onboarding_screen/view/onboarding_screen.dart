@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../blocs/onboarding_cubit/onboarding_cubit.dart';
-import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles/onboarding_text_style.dart';
 import '../../../util/app_routes.dart';
 import '../../app/widgets/chosen_action_button_widget.dart';
@@ -127,7 +124,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ]),
                     const Spacer(),
                     ChosenActionButton(
-                      onTap: _onActionButtonTap, // Use the new method here
+                      onTap: _onActionButtonTap,
                       text: 'Empezar',
                     ),
                     SizedBox(

@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             if (universities.isEmpty)
-              Center(
+              const Center(
                 child: Padding(
                   padding: EdgeInsets.only(top: 16.0),
                   child: Text(

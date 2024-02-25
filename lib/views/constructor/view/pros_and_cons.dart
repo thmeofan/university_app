@@ -57,7 +57,7 @@ class _ProsAndConsScreenState extends State<ProsAndConsScreen> {
         child: Container(
           color: AppColors.lightGreyColor,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween, // Add this line
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: Padding(
@@ -69,7 +69,6 @@ class _ProsAndConsScreenState extends State<ProsAndConsScreen> {
                   ),
                   child: SingleChildScrollView(
                     child: Column(
-                      //    crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -207,8 +206,6 @@ class _ProsAndConsScreenState extends State<ProsAndConsScreen> {
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                            // left: size.width * 0.01,
-                            // right: size.width * 0.01,
                             bottom: size.height * 0.025,
                           ),
                           child: ChosenActionButton(

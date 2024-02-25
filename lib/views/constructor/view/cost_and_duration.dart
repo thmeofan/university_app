@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:university_app/consts/app_text_styles/full_info_text_style.dart';
 import 'package:university_app/util/app_routes.dart';
 import 'package:university_app/views/app/widgets/chosen_action_button_widget.dart';
-import 'package:university_app/views/constructor/view/specielties.dart';
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles/constructor_text_style.dart';
 import '../../../data/model/university_info.dart';
