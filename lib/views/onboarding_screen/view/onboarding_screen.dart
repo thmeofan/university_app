@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../blocs/onboarding_cubit/onboarding_cubit.dart';
 import '../../../consts/app_colors.dart';
@@ -25,6 +26,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final CarouselController _carouselController = CarouselController();
   int _current = 0;
 
+  void _onActionButtonTap() {
+    if (_current == 0) {
+      _carouselController.nextPage(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.linear,
+      );
+    } else {
+      context.read<OnboardingCubit>().setFirstTime();
+      Navigator.pushReplacementNamed(context, AppRoutes.home);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -34,6 +47,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
+        leading: Image.asset('assets/images/uni.png'),
+        titleSpacing: -5,
+        title: const Text(
+          'CounselUni',
+          style: OnboardingTextStyle.screenTitle,
+        ),
       ),
       body: Container(
         // color: AppColors.blackColor,
@@ -53,7 +72,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 options: CarouselOptions(
                   height: size.height * 0.6,
                   autoPlay: false,
-                  //  enlargeCenterPage: true,
                   viewportFraction: 1,
                   onPageChanged: (index, reason) {
                     setState(() {
@@ -109,10 +127,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ]),
                     const Spacer(),
                     ChosenActionButton(
-                      onTap: () async {
-                        context.read<OnboardingCubit>().setFirstTime();
-                        Navigator.pushReplacementNamed(context, AppRoutes.home);
-                      },
+                      onTap: _onActionButtonTap, // Use the new method here
                       text: 'Empezar',
                     ),
                     SizedBox(

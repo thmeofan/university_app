@@ -13,14 +13,15 @@ class IntroductionWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       height: size.height * 0.4,
+      width: double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(imagePath),
-          fit: BoxFit.contain,
-          colorFilter: ColorFilter.mode(
-            Colors.white.withOpacity(1),
-            BlendMode.dstATop,
-          ),
+          fit: BoxFit.cover,
+          // colorFilter: ColorFilter.mode(
+          //   //Colors.white.withOpacity(1),
+          //   BlendMode.dstATop,
+          // ),
         ),
       ),
     );

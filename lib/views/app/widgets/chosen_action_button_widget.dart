@@ -34,7 +34,7 @@ class ChosenActionButton extends StatelessWidget {
           ),
           child: Text(
             text,
-            style: OnboardingTextStyle.screenTitle,
+            style: OnboardingTextStyle.button,
           ),
         ),
       ),

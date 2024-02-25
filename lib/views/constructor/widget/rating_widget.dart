@@ -1,43 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class StarRatingWidget extends StatefulWidget {
+typedef RatingChangeCallback = void Function(int rating);
+
+class StarRating extends StatelessWidget {
   final int rating;
-  final ValueChanged<int> onRatingChanged;
+  final RatingChangeCallback onRatingChanged;
+  final Color color;
 
-  StarRatingWidget({required this.rating, required this.onRatingChanged});
+  StarRating(
+      {required this.rating,
+      required this.onRatingChanged,
+      this.color = Colors.amber});
 
-  @override
-  _StarRatingWidgetState createState() => _StarRatingWidgetState();
-}
-
-class _StarRatingWidgetState extends State<StarRatingWidget> {
-  int currentRating = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    currentRating = widget.rating;
+  Widget buildStar(int index) {
+    return GestureDetector(
+      onTap: () => onRatingChanged(index),
+      child: SvgPicture.asset(
+        'assets/icons/star.svg',
+        color: index < rating ? color : Colors.grey,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: List.generate(5, (index) {
-        return IconButton(
-          icon: SvgPicture.asset(
-            'assets/icons/star.svg',
-            color: index < currentRating ? Colors.yellow : Colors.grey,
-          ),
-          onPressed: () {
-            setState(() {
-              currentRating = index + 1;
-            });
-            widget.onRatingChanged(currentRating);
-          },
-        );
-      }),
+      children: List.generate(5, (index) => buildStar(index + 1)),
     );
   }
 }

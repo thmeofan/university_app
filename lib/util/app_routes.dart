@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/onboarding_cubit/onboarding_cubit.dart';
 import '../data/repository/onboarding_repository.dart';
+import '../views/home/views/home_screen.dart';
 import '../views/onboarding_screen/view/onboarding_screen.dart';
 import '../views/settings/views/settings_screen.dart';
-import '../views/synopsis/views/synopsis_screen.dart';
 
 abstract class AppRoutes {
   static const home = 'home';
@@ -24,7 +24,7 @@ abstract class AppRoutes {
 
     switch (settings.name) {
       case home:
-        child = const HomeScreen();
+        child = HomeScreen();
       case profile:
         child = const SettingsScreen();
       // case quiz:
