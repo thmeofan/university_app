@@ -163,23 +163,38 @@ class _BasicInfoScreenState extends State<BasicInfoScreen> {
               ),
               Spacer(),
               ChosenActionButton(
-                text: 'Próximo',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProsAndConsScreen(
-                        universityInfo: UniversityInfo(
-                          name: _nameController.text,
-                          address: _addressController.text,
-                          description: _descriptionController.text,
-                          rating: _rating,
+                  text: 'Próximo',
+                  onTap: () {
+                    if (_nameController.text.isNotEmpty &&
+                        _addressController.text.isNotEmpty &&
+                        _descriptionController.text.isNotEmpty &&
+                        _rating > 0) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProsAndConsScreen(
+                            universityInfo: UniversityInfo(
+                              name: _nameController.text,
+                              address: _addressController.text,
+                              description: _descriptionController.text,
+                              rating: _rating,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  );
-                },
-              ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Por favor complete todos los campos antes de continuar.',
+                            style: ConstructorTextStyle.snackBar,
+                          ),
+                          duration: Duration(seconds: 2),
+                          backgroundColor: AppColors.lightGreyColor,
+                        ),
+                      );
+                    }
+                  }),
               SizedBox(
                 height: size.height * 0.025,
               ),

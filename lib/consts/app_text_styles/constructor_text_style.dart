@@ -49,4 +49,10 @@ class ConstructorTextStyle {
     fontWeight: FontWeight.w400,
     color: Colors.black.withOpacity(0.5),
   );
+  static TextStyle snackBar = TextStyle(
+    fontFamily: 'SF Pro Text',
+    fontSize: 16.0,
+    fontWeight: FontWeight.w400,
+    color: Colors.black.withOpacity(0.5),
+  );
 }

@@ -165,15 +165,29 @@ class _CostAndDurationScreenState extends State<CostAndDurationScreen> {
               ChosenActionButton(
                 text: 'Hecho',
                 onTap: () async {
-                  widget.universityInfo.cost = _costController.text;
-                  widget.universityInfo.duration = _durationController.text;
-                  List<UniversityInfo> universityList =
-                      await UniversityPreferences().loadUniversityList();
-                  universityList.add(widget.universityInfo);
-                  await UniversityPreferences()
-                      .saveUniversityList(universityList);
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      AppRoutes.home, (Route<dynamic> route) => false);
+                  if (_costController.text.isNotEmpty &&
+                      _durationController.text.isNotEmpty) {
+                    widget.universityInfo.cost = _costController.text;
+                    widget.universityInfo.duration = _durationController.text;
+                    List<UniversityInfo> universityList =
+                        await UniversityPreferences().loadUniversityList();
+                    universityList.add(widget.universityInfo);
+                    await UniversityPreferences()
+                        .saveUniversityList(universityList);
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        AppRoutes.home, (Route<dynamic> route) => false);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Por favor complete todos los campos antes de continuar.',
+                          style: ConstructorTextStyle.snackBar,
+                        ),
+                        duration: Duration(seconds: 2),
+                        backgroundColor: AppColors.lightGreyColor,
+                      ),
+                    );
+                  }
                 },
               )
             ],

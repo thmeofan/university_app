@@ -30,7 +30,7 @@ class _ProsAndConsScreenState extends State<ProsAndConsScreen> {
     Size size = MediaQuery.of(context).size;
     int numberOfTextFields = _prosControllers.length + _consControllers.length;
     double spacerHeight =
-        size.height * 0.55 - (numberOfTextFields * size.height * 0.1);
+        size.height * 0.55 - (numberOfTextFields * size.height * 0.11);
     if (spacerHeight < 0) {
       spacerHeight = 0;
     }
@@ -211,18 +211,38 @@ class _ProsAndConsScreenState extends State<ProsAndConsScreen> {
                           child: ChosenActionButton(
                             text: 'Próximo',
                             onTap: () {
-                              widget.universityInfo.pros =
-                                  _prosControllers.map((c) => c.text).toList();
-                              widget.universityInfo.cons =
-                                  _consControllers.map((c) => c.text).toList();
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SpecialtiesScreen(
-                                    universityInfo: widget.universityInfo,
+                              bool prosFilled = _prosControllers.any(
+                                  (controller) => controller.text.isNotEmpty);
+                              bool consFilled = _consControllers.any(
+                                  (controller) => controller.text.isNotEmpty);
+
+                              if (prosFilled && consFilled) {
+                                widget.universityInfo.pros = _prosControllers
+                                    .map((c) => c.text)
+                                    .toList();
+                                widget.universityInfo.cons = _consControllers
+                                    .map((c) => c.text)
+                                    .toList();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SpecialtiesScreen(
+                                      universityInfo: widget.universityInfo,
+                                    ),
                                   ),
-                                ),
-                              );
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Agregue al menos una ventaja y una desventaja antes de continuar.',
+                                      style: ConstructorTextStyle.snackBar,
+                                    ),
+                                    duration: Duration(seconds: 2),
+                                    backgroundColor: AppColors.lightGreyColor,
+                                  ),
+                                );
+                              }
                             },
                           ),
                         ),

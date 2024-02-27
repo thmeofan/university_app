@@ -81,15 +81,28 @@ class _SpecialtiesScreenState extends State<SpecialtiesScreen> {
               ChosenActionButton(
                 text: 'Próximo',
                 onTap: () {
-                  widget.universityInfo.specialties = _specialties;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CostAndDurationScreen(
-                        universityInfo: widget.universityInfo,
+                  if (_specialties.isNotEmpty) {
+                    widget.universityInfo.specialties = _specialties;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CostAndDurationScreen(
+                          universityInfo: widget.universityInfo,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Agregue al menos una especialidad antes de continuar.',
+                          style: ConstructorTextStyle.snackBar,
+                        ),
+                        duration: Duration(seconds: 2),
+                        backgroundColor: AppColors.lightGreyColor,
+                      ),
+                    );
+                  }
                 },
               ),
               SizedBox(

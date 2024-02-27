@@ -66,15 +66,17 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             if (universities.isEmpty)
-              const Center(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 16.0),
-                  child: Text(
-                    "Para iniciar la selección, añade la primera universidad.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey,
+              const Expanded(
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 16.0),
+                    child: Text(
+                      "Para iniciar la selección, añade la primera universidad.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
                 ),
